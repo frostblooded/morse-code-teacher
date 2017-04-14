@@ -2,15 +2,11 @@ import time
 import RPi.GPIO as GPIO
 
 class InputReader:
-    input_button_pin = None
-    end_input_button_pin = None
-    
-    presses = []
-    press_start = None
-
     def __init__(self, input_button_pin, end_input_button_pin):
         self.input_button_pin = input_button_pin
         self.end_input_button_pin = end_input_button_pin
+        self.presses = []
+        self.press_start = None
 
     def handle_just_pressed(self):
         print('Input button pressed')
