@@ -15,13 +15,14 @@ class InputHandler:
     
     @staticmethod
     def read():
-        pass
         press_start = None
         
         while True:
+            # If the input button is pressed and isn't being held
             if GPIO.input(INPUT_BUTTON_PIN) and press_start == None:
                 print('Input button pressed')
                 press_start = time.time()
+            # If the input button isn't pressed and has just been released
             elif not GPIO.input(INPUT_BUTTON_PIN) and press_start != None:
                 press_end = time.time()
                 press_duration = press_end - press_start
