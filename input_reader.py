@@ -30,7 +30,7 @@ class InputReader:
                 self.handle_just_pressed()
             elif not GPIO.input(self.input_button_pin) and self.press_start != None:
                 self.handle_just_released()
-            elif GPIO.input(self.end_input_button_pin):
+            elif GPIO.input(self.end_input_button_pin) and len(self.presses) > 0:
                 print('Ending input')
                 break
 
