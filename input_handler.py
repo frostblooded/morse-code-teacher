@@ -12,9 +12,10 @@ class InputHandler:
         
         GPIO.setup(INPUT_BUTTON_PIN, GPIO.IN)
         GPIO.setup(END_INPUT_BUTTON_PIN, GPIO.IN)
-    
+
     @staticmethod
     def read():
+        presses = []
         press_start = None
         
         while True:
@@ -26,6 +27,8 @@ class InputHandler:
             elif not GPIO.input(INPUT_BUTTON_PIN) and press_start != None:
                 press_end = time.time()
                 press_duration = press_end - press_start
+                presses.append(press_duration)
+                
                 press_start = None
                 print("Input button released. It was pressed for {:0.4f}"
                       .format(press_duration))
@@ -33,3 +36,5 @@ class InputHandler:
             if GPIO.input(END_INPUT_BUTTON_PIN):
                 print('Ending input')
                 break
+
+        return presses

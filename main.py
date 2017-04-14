@@ -2,7 +2,7 @@ from input_handler import InputHandler
 
 
 def loop():
-    InputHandler.read()
+    presses = InputHandler.read()
 
 def init():
     InputHandler.init()
