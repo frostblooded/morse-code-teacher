@@ -23,7 +23,3 @@ class OutputHandler:
         
         symbols = ' '.join(symbols)
         OutputHandler.say(symbols, 100)
-
-    @staticmethod
-    def congratulate():
-        OutputHandler.say('well done')
