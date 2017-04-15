@@ -1,3 +1,4 @@
+import os
 from subprocess import call
 from morse_code_transformer import MorseCodeTransformer
 
@@ -9,8 +10,10 @@ class OutputHandler:
         if rate:
             args.append('-s')
             args.append(str(rate))
-        
-        call(args)
+
+        # Ignore output from espeak
+        std_null = open(os.devnull, 'w')
+        call(args, stdout=std_null, stderr=std_null)
 
     @staticmethod
     def introduce_letter(letter):
