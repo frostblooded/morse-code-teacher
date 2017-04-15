@@ -2,7 +2,8 @@ from subprocess import call
 from morse_code_transformer import MorseCodeTransformer
 
 class OutputHandler:
-    def say(self, something, rate=None): # I'm giving up on you
+    @staticmethod
+    def say(something, rate=None): # I'm giving up on you
         args = ['espeak', something]
 
         if rate:
@@ -10,9 +11,10 @@ class OutputHandler:
             args.append(str(rate))
         
         call(args)
-    
-    def introduce_letter(self, letter):
-        self.say('please enter the letter ' + letter)
+
+    @staticmethod
+    def introduce_letter(letter):
+        OutputHandler.say('please enter the letter ' + letter)
         morse_letter = MorseCodeTransformer.LETTERS[letter]
         
         symbols = ['dot' if symbol == MorseCodeTransformer.DOT
@@ -20,7 +22,8 @@ class OutputHandler:
                    for symbol in morse_letter]
         
         symbols = ' '.join(symbols)
-        self.say(symbols, 100)
+        OutputHandler.say(symbols, 100)
 
-    def congratulate(self):
-        self.say('well done')
+    @staticmethod
+    def congratulate():
+        OutputHandler.say('well done')
