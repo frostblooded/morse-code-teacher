@@ -2,7 +2,7 @@ class MorseCodeTransformer:
     DOT = 0
     DASH = 1
 
-    DOT_DASH_BORDER = 0.15
+    DOT_DASH_BORDER = 0.30
 
     LETTERS = {
         'a': [DOT, DASH],
