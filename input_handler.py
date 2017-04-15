@@ -16,11 +16,10 @@ class InputHandler:
     def read(self):
         reader = InputReader(self.input_button_pin, self.end_input_button_pin)
         return reader.read()
+            
 
-    def transform_presses(self, presses, dot, dash):
+    def transform_presses(self, presses, dot, dash, dot_dash_border):
         if presses == []:
             return []
         
-        average = sum(presses) / len(presses)
-        code = [dot if press < average else dash for press in presses]
-        return code
+        return [dot if press < dot_dash_border else dash for press in presses]

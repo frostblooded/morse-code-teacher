@@ -7,15 +7,18 @@ class Program:
     DOT = 0
     DASH = 1
 
+    DOT_DASH_BORDER = 0.15
+
     def loop(self):
-        presses = self.handler.read()
-        morse_code = self.handler.transform_presses(presses,
+        presses = self.input_handler.read()
+        morse_code = self.input_handler.transform_presses(presses,
                                                     Program.DOT,
-                                                    Program.DASH)
+                                                    Program.DASH,
+                                                    Program.DOT_DASH_BORDER)
         print(morse_code)
 
     def __init__(self):
-        self.handler = InputHandler(Program.INPUT_BUTTON_PIN,
+        self.input_handler = InputHandler(Program.INPUT_BUTTON_PIN,
                                     Program.END_INPUT_BUTTON_PIN)
         
         while True:
