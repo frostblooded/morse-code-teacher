@@ -5,7 +5,8 @@ class Program:
     def loop(self):
         presses = self.input_handler.read()
         morse_code = self.transformer.from_presses(presses)
-        print(morse_code)
+        char = self.transformer.to_char(morse_code)
+        print(char)
 
     def __init__(self):
         self.input_handler = InputHandler()
