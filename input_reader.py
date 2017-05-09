@@ -20,6 +20,7 @@ class InputReader:
         self.press_start = None
         print("Input button released. It was pressed for {:0.4f}"
               .format(press_duration))
+        time.sleep(0.1)
     
     def read(self):   
         presses = []
